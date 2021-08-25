@@ -2,7 +2,7 @@
 //
 
 #include <iostream>
-
+#include <string>
 #include <fstream>
 #include <chrono>
 #include <set>
@@ -61,6 +61,8 @@ void TestOpenClose()
     }
 
     DeleteFileA(filename.c_str());
+
+    cout << "[OP_COUNT] OpenClose: " << maxFsOpIterations << std::endl;
 }
 
 
@@ -88,8 +90,8 @@ void TestRead()
 
         pagesRead++;
     }
-    cout << "pages read: " << pagesRead << endl;
 
+    cout << "[OP_COUNT] Read: " << pagesRead << std::endl;
     DeleteFileA(testFileName.c_str());
 }
 
@@ -120,7 +122,8 @@ void TestWrite()
 
         pagesWritten++;
     }
-    cout <<"pages written: " << pagesWritten << endl;
+
+    cout << "[OP_COUNT] Write: " << pagesWritten << std::endl;
 
     DeleteFileA(filename.c_str());
 }
@@ -155,7 +158,8 @@ void TestRename()
         }
         renames++;
     }
-    cout <<"renamed performed: " << renames << endl;
+
+    cout << "[OP_COUNT] Rename: " << renames << std::endl;
 
     DeleteFileA(name1.c_str());
     DeleteFileA(name2.c_str());
@@ -184,6 +188,8 @@ void TestDelete()
         DeleteFileA(name.c_str());
     }
     filesTobeDeleted.clear();
+
+    cout << "[OP_COUNT] Delete: " << maxFsOpIterations << std::endl;
 }
 
 void createBigFile()
